@@ -22,6 +22,10 @@ io.on('connection', (socket) => {
   // print out 'chat message' event
   socket.on('chat message', (msg) => {
     console.log('message: ' + msg);
+    // 'emit' msg to everyone
+    io.emit('chat message', msg);
+    // or 'broadcast' msg to everyone EXCEPT for the certain emitting  socket
+    // socket.broadcast.emit('hi');
   });
   // disconnection event fires when user closes the page in browser
   socket.on('disconnect', () => {
