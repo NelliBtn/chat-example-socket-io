@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   // connection event fires and logs in terminal when open or refresh the page in browser
   console.log('a user connected');
+
+  // print out 'chat message' event
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
   // disconnection event fires when user closes the page in browser
   socket.on('disconnect', () => {
     console.log('user disconnected');
